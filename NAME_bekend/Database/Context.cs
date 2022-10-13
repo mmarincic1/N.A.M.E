@@ -37,12 +37,6 @@ namespace NAME_bekend.Database
         //Ukoliko zelite da se spojite na lokalnu bazu u DependencyInjection.cs morate promijeniti dbConnString u 'Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LokalnaBaza;'
         //i u metodi dole isto, nakon toga pratite komentare u metodi ispod
 
-
-
-
-        //Ukoliko zelite da se spojite na lokalnu bazu u DependencyInjection.cs morate promijeniti dbConnString u 'Data Source=(localdb)\ProjectsV13;Initial Catalog=LokalnaBaza;'
-        //i u metodi dole isto, nakon toga pratite komentare u metodi ispod
-
         
     }
 }
