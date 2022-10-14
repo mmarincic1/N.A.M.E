@@ -11,7 +11,7 @@ using NAME_bekend.Database;
 namespace NAME_bekend.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20221013180756_initial")]
+    [Migration("20221014165815_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

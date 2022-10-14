@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NAME_bekend", "NAME_bekend\NAME_bekend.csproj", "{8B2B0410-0A64-4D35-9FAE-AC3E3980546D}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "name_frontend", "NAME_frontend\name_frontend.esproj", "{378F993D-4C46-4D85-91EE-9148F28DD3F0}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "NAME_frontend", "NAME_frontend\NAME_frontend.esproj", "{378F993D-4C46-4D85-91EE-9148F28DD3F0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8B2B0410-0A64-4D35-9FAE-AC3E3980546D} = {8B2B0410-0A64-4D35-9FAE-AC3E3980546D}
 	EndProjectSection
