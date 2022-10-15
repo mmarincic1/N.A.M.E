@@ -11594,8 +11594,9 @@ body {
 }
 
 .about-section {
-  padding-top: 10rem;
-  background: linear-gradient(to bottom, #FFF 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-image: url("https://img2.goodfon.com/wallpaper/nbig/a/ee/nurse-doctor-medicine.jpg");
 }
 .about-section p {
   margin-bottom: 5rem;
@@ -11692,9 +11693,18 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: none;
-  border-radius: 0;
+  border-radius: 20px;
+}
+.Auth-form-container{
+  height: 50vh;
 }
 
 .textareaForm{
   height: 200px;
 }
+
+.sredina{
+  width: 70%;
+  margin: 0 auto;
+}
+
