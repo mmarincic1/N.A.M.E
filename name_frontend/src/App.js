@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home.js';
 import Login from './components/Login.js';
+import Register from './components/Register.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -33,7 +34,8 @@ function App() {
                     {/*<Nav.Link className="mr-auto">Login</Nav.Link>*/}
                 </Nav>
                 <Nav className="ml-auto">
-                    <Nav.Link className="mr-auto" href="/login">Login</Nav.Link>
+                        <Nav.Link className="mr-auto" href="/login">Login</Nav.Link>
+                        <Nav.Link className="mr-auto" href="/register">Register</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Container>
@@ -42,6 +44,7 @@ function App() {
             <Routes>
                 <Route exact path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
             </Routes>
         </Router>
     </>

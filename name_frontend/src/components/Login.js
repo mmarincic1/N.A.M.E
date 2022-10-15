@@ -31,7 +31,7 @@ export default function Login(props) {
                 </button>
             </div>
             <p className="forgot-password text-right mt-2">
-                Forgot <a href="#">password?</a>
+                 <a href="#">Forgot password?</a>
             </p>
         </div>
       </form>

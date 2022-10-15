@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
-export default function Home() {
-    const [ID, setID] = useState("");
+export default function Register(props) {
+
+    const [Email, setEmail] = useState("");
+    const [Password, setPassword] = useState("");
+    const [ConfirmPass, setConfirmPass] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -18,36 +17,42 @@ export default function Home() {
             <div className="Auth-form-container">
                 <form className="Auth-form" onSubmit={handleSubmit}>
                     <div className="Auth-form-content">
-                        <h3 className="Auth-form-title">Dobrodosli</h3>
-                        <div className="form-group mt-3 required">
-                            <label>Ime</label>
+                        <h3 className="Auth-form-title">Register</h3>
+                        <div className="form-group mt-3">
+                            <label>Email address</label>
                             <input
-                                type="text"
+                                type="email"
                                 className="form-control mt-1"
-                                placeholder="Unesite ime"
+                                placeholder="Enter email"
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="form-group mt-3">
-                            <label>Prezime</label>
+                            <label>Password</label>
                             <input
-                                type="text"
+                                type="password"
                                 className="form-control mt-1"
-                                placeholder="Unesite prezime"
+                                placeholder="Enter password"
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <div className="form-group mt-3">
-                            <label>Broj zdravstvene kartice</label>
+                            <label>Confirm password</label>
                             <input
-                                type="text"
+                                type="password"
                                 className="form-control mt-1"
-                                required
+                                placeholder="Re-type password"
+                                onChange={(e) => setConfirmPass(e.target.value)}
                             />
                         </div>
                         <div className="d-grid gap-2 mt-3">
                             <button type="submit" className="btn btn-primary">
-                                Provjeri
+                                Register
                             </button>
                         </div>
+                        <p className="forgot-password text-right mt-2">
+                            <a href="#">Forgot password?</a>
+                        </p>
                     </div>
                 </form>
             </div>
