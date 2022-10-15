@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import './modal.css'
 const RequestItem = (props) => {
      
     function openDescription(event, index){
@@ -18,21 +19,23 @@ const RequestItem = (props) => {
     <div onClick={event => openDescription(event, props.index)}>
       <a className="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">{props.index}</a>
     </div>
-
-      <Modal show={show} onHide={handleClose}>
+    <div className='modalCenter'>
+      <Modal show={show} onHide={handleClose} style={{display:"flex !important"}} class='modal'>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title><b>Pacijent:</b> {props.ime}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body> <b>Opis zahtjeva:</b> {props.opis}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="danger" onClick={handleClose}>
+            Odbij zahtjev
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="success" onClick={handleClose}>
+            Posalji uputnicu
           </Button>
         </Modal.Footer>
       </Modal>
+    </div>
+      
     </>
   );
 };
