@@ -17,16 +17,12 @@ export default function KorisnikHome(props) {
             </div>
         </header>
         <section class="about-section text-center" id="upitPedijatru">
+        <h3>Uputite poruku vašem doktoru</h3>
         <div className="Auth-form-container">
-            <form className="Auth-form">
-                <h3 className="Auth-form-title">Javite se vašem ljekaru</h3>
+            <form className="Auth-form" id="requestForm">
+                <label>Zahtjev za doktora: Ime i prezime ljekara</label>
                 <div className="form-group mt-3">
-                    <label>Opišite vaš problem</label>
-                    <input
-                        type="textarea"
-                        className="form-control mt-1"
-                        placeholder="Enter email"
-                    />
+                    <textarea className='textareaForm' name="request" form="requestForm" placeholder='Opišite vaš problem...' cols={50} rows={50} ></textarea>
                 </div>
                 <div className="d-grid gap-2 mt-3">
                     <button type="submit" className="btn btn-primary">

@@ -11687,3 +11687,14 @@ body {
 .footer {
   padding: 5rem 0;
 }
+
+.Auth-form{
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.textareaForm{
+  height: 200px;
+}

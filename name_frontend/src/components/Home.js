@@ -11,6 +11,23 @@ export default function Home() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log("event", event);
+        const body = {
+            ime: event.target[0].value,
+            prezime: event.target[1].value,
+            brojZdravstveneKartice: event.target[2].value
+        }
+        const response = await fetch("https://localhost:7162/Auth/userExists", {
+                   method: "POST",
+                   headers: {
+                    "Content-Type": "application/json"
+                   },
+                   body: body
+                }
+                   );
+        const data = await response.json();
+        console.log("data", data);
+
+        window.location = "/register";
     }
 
     return (
