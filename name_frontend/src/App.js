@@ -6,6 +6,8 @@ import Login from './components/Login.js';
 import Register from './components/Register.js';
 import DoctorPanel from './components/DoctorPanel';
 import KorisnikHome from './components/korisnik/KorisnikHome';
+import DoktorHome from './components/doktor/DoktorHome';
+import LoginDoktor from './components/LoginDoktor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -14,7 +16,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function App() {
     return (<>
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" className="sticky-top">
         <Container>
             <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,7 +24,7 @@ function App() {
                 <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="#link">Link</Nav.Link>
-                    <Nav.Link href="/doctor_panel">Doctor Panel</Nav.Link>
+                    <Nav.Link href="/doktor">Doctor Panel</Nav.Link>
 
                     <Nav.Link href="/korisnik">Korisnik Home</Nav.Link>
 
@@ -48,12 +50,13 @@ function App() {
         </Navbar>
         <Router>
             <Routes>
-                <Route exact path='/' element={<Home />} />
+                <Route exact path='/' element={<Login />} />
                 <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/doctor_panel' element={<DoctorPanel />} />
-
+                <Route path='/register' element={<Home />} />
+                <Route path='/zahtjevi' element={<DoctorPanel />} />
+                <Route path='/doktor' element={<DoktorHome />} />
                 <Route path='/korisnik' element={<KorisnikHome />} />
+                <Route path='/loginDoktor' element={<LoginDoktor />} />
             </Routes>
         </Router>
     </>

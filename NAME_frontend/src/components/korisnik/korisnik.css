@@ -11413,7 +11413,7 @@ textarea.form-control-lg {
   }
 }
 @media print {
-  .d-print-inline {
+    .d-print-inline {
     display: inline !important;
   }
 
@@ -11711,4 +11711,10 @@ body {
 .sredina{
   width: 70%;
   margin: 0 auto;
+}
+
+
+.my-area {
+    width: 85% !important;
+    margin: auto;
 }

@@ -123,7 +123,36 @@ namespace NAME_bekend.Controllers
         }
 
         [EnableCors("CorsPolicy")]
-        [HttpGet("userExists")]
+        [HttpPost("loginDoktor")]
+        public async Task<ActionResult<DoktorModel>> LoginDoktor(UserDto userDto)
+        {
+
+            Console.WriteLine("inside post");
+            if (userDto == null) new TFAModel("ERROR");
+            DoktorModel doktor = await _context.DoktorModels.Where(u => u.Email.Equals(userDto.Email)).FirstOrDefaultAsync();
+            var sha = SHA256.Create();
+            var passwordHash = Encoding.ASCII.GetString(sha.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)));
+            Console.WriteLine(passwordHash);
+            Console.WriteLine(userDto.Password);
+            if (doktor == null || !passwordHash.Equals(doktor.Password))
+            {
+                return BadRequest();
+            }
+            //user.Question = await _context.SecurityQuestionModels.FindAsync(user.QuestionId);
+            /*string token = CreateToken(user);
+
+            CookieOptions cookieOptions = new CookieOptions();
+            cookieOptions.Secure = false;
+            cookieOptions.HttpOnly = false;
+            cookieOptions.Expires = DateTime.UtcNow.AddMinutes(30);
+            cookieOptions.SameSite = SameSiteMode.None;
+            Response.Cookies.Append("jwt", token, cookieOptions);*/
+
+            return doktor;
+        }
+
+        [EnableCors("CorsPolicy")]
+        [HttpPost("userExists")]
         public async Task<ActionResult<UserModel>> UserExist(UserModelRegister userModelRegister)
         {
             if (userModelRegister == null) new TFAModel("ERROR");
