@@ -95,7 +95,7 @@ namespace NAME_bekend.Controllers
 
         [EnableCors("CorsPolicy")]
         [HttpPost("login")]
-        public async Task<ActionResult<TFAModel>> Login(UserDto userDto)
+        public async Task<ActionResult<UserModel>> Login(UserDto userDto)
         {
 
             Console.WriteLine("inside post");
@@ -107,7 +107,7 @@ namespace NAME_bekend.Controllers
             Console.WriteLine(userDto.Password);
             if (user == null || !passwordHash.Equals(user.Password))
             {
-                return new TFAModel("ERROR");
+                return BadRequest();
             }
             //user.Question = await _context.SecurityQuestionModels.FindAsync(user.QuestionId);
             string token = CreateToken(user);
@@ -119,7 +119,7 @@ namespace NAME_bekend.Controllers
             cookieOptions.SameSite = SameSiteMode.None;
             Response.Cookies.Append("jwt", token, cookieOptions);
 
-            return new TFAModel(token);
+            return user;
         }
 
         [EnableCors("CorsPolicy")]

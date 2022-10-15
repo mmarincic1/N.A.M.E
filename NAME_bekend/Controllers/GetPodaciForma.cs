@@ -88,7 +88,21 @@ namespace NAME_bekend.Controllers
             return rez;
         }
 
+        [HttpGet("doctor/{id}")]
+        [EnableCors("CorsPolicy")]
+        public async Task<ActionResult<DoktorModel>> getDoktor(int id)
+        {
+            Console.WriteLine("GET DOKTORA SA ID " + id);
 
+            DoktorModel data = await _context.DoktorModels.Where(u => u.Id.Equals(id)).FirstOrDefaultAsync();
+
+            Console.WriteLine(data);
+
+            if (data == null)
+                return BadRequest();
+
+            return data;
+        }
 
 
         private bool postojiId(string lista, int id)

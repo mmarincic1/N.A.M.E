@@ -123,6 +123,21 @@ namespace NAME_bekend.Migrations
                 {
                     table.PrimaryKey("PK_UstanovaModels", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "ZahtjevModels",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PosiljalacId = table.Column<int>(type: "int", nullable: false),
+                    PrimalacID = table.Column<int>(type: "int", nullable: false),
+                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ZahtjevModels", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -147,6 +162,9 @@ namespace NAME_bekend.Migrations
 
             migrationBuilder.DropTable(
                 name: "UstanovaModels");
+
+            migrationBuilder.DropTable(
+                name: "ZahtjevModels");
         }
     }
 }
