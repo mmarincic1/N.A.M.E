@@ -5,6 +5,7 @@ import Home from './components/Home.js';
 import Login from './components/Login.js';
 import Register from './components/Register.js';
 import DoctorPanel from './components/DoctorPanel';
+import KorisnikHome from './components/korisnik/KorisnikHome';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -22,6 +23,9 @@ function App() {
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="#link">Link</Nav.Link>
                     <Nav.Link href="/doctor_panel">Doctor Panel</Nav.Link>
+
+                    <Nav.Link href="/korisnik">Korisnik Home</Nav.Link>
+
                     <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">
@@ -48,6 +52,8 @@ function App() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/doctor_panel' element={<DoctorPanel />} />
+
+                <Route path='/korisnik' element={<KorisnikHome />} />
             </Routes>
         </Router>
     </>

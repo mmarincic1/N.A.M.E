@@ -8,6 +8,14 @@ namespace NAME_bekend.Database
     {
         //Tabele u bazi
         public virtual DbSet<UserModel> UserModels { get; set; }
+        public virtual DbSet<UslugaModel> UslugaModels { get; set; }
+        public virtual DbSet<OdjeljenjeModel> OdjeljenjeModels { get; set; }
+        public virtual DbSet<UstanovaModel> UstanovaModels { get; set; }
+        public virtual DbSet<OpstinaModel> OpstinaModels { get; set; }
+        public virtual DbSet<GradModel> GradModels { get; set; }
+        public virtual DbSet<DoktorModel> DoktorModels { get; set; }
+        public virtual DbSet<ZahtjevModel> ZahtjevModels { get; set; }
+
         public Context([NotNull] DbContextOptions<Context> options) : base(options) {
             var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
         }
