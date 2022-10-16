@@ -17,7 +17,7 @@ const RequestItem = (props) => {
   return (
     <>
     <div onClick={event => openDescription(event, props.index)}>
-      <a className="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">{props.index}</a>
+      <a className="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">{props.ime}</a>
     </div>
     <div className='modalCenter'>
       <Modal show={show} onHide={handleClose} style={{display:"flex !important"}} class='modal'>

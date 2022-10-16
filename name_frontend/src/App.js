@@ -24,7 +24,7 @@ function App() {
                 <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="#link">Link</Nav.Link>
-                    <Nav.Link href="/doktor">Doctor Panel</Nav.Link>
+                    <Nav.Link href="/zahtjevi">Zahtjevi</Nav.Link>
 
                     <Nav.Link href="/korisnik">Korisnik Home</Nav.Link>
 

@@ -48,6 +48,20 @@ namespace NAME_bekend.Controllers
         }
 
 
+        [HttpPost(Name = "user/{id}")]
+        public async Task<ActionResult<UserModel>> GetUser(int id)
+        {
+
+            UserModel user = await _context.UserModels.Where(u => u.Id == id).FirstOrDefaultAsync();
+
+            if (user == null)
+                return BadRequest();
+
+            return user;
+
+        }
+
+
         protected JwtSecurityToken ValidateToken(string token)
         {
             var handler = new JwtSecurityTokenHandler();
