@@ -15,6 +15,8 @@ namespace NAME_bekend.Database
         public virtual DbSet<GradModel> GradModels { get; set; }
         public virtual DbSet<DoktorModel> DoktorModels { get; set; }
         public virtual DbSet<ZahtjevModel> ZahtjevModels { get; set; }
+        public virtual DbSet<OdbijeniZahtjev> OdbijeniZahtjevs { get; set; }
+        public virtual DbSet<OdobrenaUputnica> OdobrenaUputnicas { get; set; }
 
         public Context([NotNull] DbContextOptions<Context> options) : base(options) {
             var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();

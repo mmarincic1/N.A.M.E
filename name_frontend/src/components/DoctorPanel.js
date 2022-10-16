@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import {BrowserRouter as Router} from 'react-router-dom';
 import { useState } from "react";
 import RequestItem from "./RequestItem";
+import { useEffect } from "react";
 
 
 const navigation = [
@@ -17,36 +18,78 @@ const navigation = [
 ];
 
 const DoctorPanel = () => {
+    useEffect(() => {
+        const id = JSON.parse(localStorage.getItem("doktor")).id;
+        console.log("id", id)
+        async function dohvatiZahtjeve(id) {
+            fetch("https://localhost:7162/ListeKontroler/getZahtjeviDoktor/" + id, {
+                method: "POST"
+            })
+                .then(res => {
+                    if (res.ok) {
+                        console.log("dobri zahtjevi")
+                        return res.json()
+                    }
+                    else {
+                        console.log("rip")
+                    }
+                })
+                .then(data => {
+                    const noviZahtjevi = data.map(async zahtjev => {
+                        console.log("zahtjev", zahtjev)
+                        const resp = await fetch("https://localhost:7162/UserModel?id=" + zahtjev.posiljalacId,
+                            {
+                                method: "POST"
+                            }
+                        )
+                        const osoba = await resp.json()
+                        console.log("osoba", osoba);
+                        zahtjev.osoba = osoba
+                        console.log("zahtjev2", zahtjev)
+                        return zahtjev
+                    }
+                    )
+                    Promise.all(noviZahtjevi)
+                        .then(niz => {
+                            console.log("NIZ IZ PROMISA ", niz);
+                            setZahtjevi(niz);
+                            console.log("uspjesno");
+                        }
+                    )
+                  
+                }
+                )
+        }
+        dohvatiZahtjeve(id)
+    }, [])
 
-  
-  
-  let location = useLocation();
-  let activeMember = null;
-  let niz = [{'ime':'Lionel Messi','opis':'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum'},{'ime':'Ime','opis':'opis'},{'ime':'Ime','opis':'opis'},{'ime':'Ime','opis':'opis'},{'ime':'Ime','opis':'opis'},{'ime':'Ime','opis':'opis'}];
-  const listItems = niz.map((d,index) => < RequestItem key={index} index={index} ime={d.ime} opis={d.opis}/>
-  );
-  return (
-    <div className="mx-auto w-75 mt-5">
-      
+
+
+        const [zahtjevi, setZahtjevi] = useState([]);
+
+
+        let location = useLocation();
+        let activeMember = null;
+        const listItems = zahtjevi.map((d, index) => < RequestItem key={index} index={index} ime={d.osoba.firstName + " " + d.osoba.lastName} opis={d.text} />
+        );
+        return (
+            <div className="mx-auto w-75 mt-5">
+
+
+                <div className="list-group" id="list-tab" role="tablist">
+                    {listItems}
+                </div>
+
+                <div className="col-8">
+                    <div className="tab-content" id="nav-tabContent">
+                        <div className="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
+                        <div className="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+                        <div className="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+                        <div className="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+                    </div>
+                </div>
+            </div>
+        )
     
-      <div className="list-group" id="list-tab" role="tablist">
-        {listItems}
-      </div>
-
-      {
-
-      }
-   
-    <div className="col-8">
-      <div className="tab-content" id="nav-tabContent">
-        <div className="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
-        <div className="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-        <div className="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-        <div className="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
-      </div>
-    </div>
-  </div>
-  );
-};
-
+}
 export default DoctorPanel;
