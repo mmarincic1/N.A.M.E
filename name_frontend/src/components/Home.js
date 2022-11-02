@@ -53,7 +53,6 @@ export default function Home() {
     }
 
     const handleRegister = async (event) => {
-        console.log("reg called")
         const target = event.target;
         const body = {
             "id": 0,
@@ -88,7 +87,7 @@ export default function Home() {
 
     return (
         <>
-            <div className="Auth-form-containern my-container mt-5">
+            <div className="Auth-form-containern my-container">
                 <form className="Auth-form mx-auto" onSubmit={handleSubmit}>
                     <div className="Auth-form-content">
                         <h3 className="Auth-form-title">Dobrodosli</h3>
@@ -123,7 +122,7 @@ export default function Home() {
                             <Register></Register>
                         }
                         <div className="d-grid gap-2 mt-3">
-                            <button type="submit" className="btn btn-primary">
+                            <button type="submit" className="btn btn-primary btn-color">
                                 {text}
                             </button>
                         </div>

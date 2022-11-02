@@ -76,7 +76,7 @@ useEffect(() => {
 
     return (
         <>
-            <div className="form-group mt-3" onChange={() => console.log(event.target.id) }>
+            <div className="form-group mt-3" >
             <input class="form-check-input" type="radio" name="spol" id="M"/>
                 <label class="form-check-label ml" for="muski">
                     Muski

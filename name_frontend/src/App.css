@@ -76,3 +76,32 @@ label {
 .ml {
     margin-left: 10px;
 }
+
+.pozadina{
+    background-image : url("./components/hakaton-sliba.jpg");
+    background-size : auto;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 20px;
+}
+
+.poz-navbar {
+    background: rgb(121,199,198);
+    background: linear-gradient(90deg, rgba(121,199,198,1) 35%, rgba(203,230,229,1) 100%);
+}
+
+button {
+    background-color: #79c7c6;
+}
+
+.btn-color {
+    background-color: #79c7c6 !important;
+}
+
+.logo {
+    background-image: url("./components/logo2.jpg");
+    background-size: auto;
+    height: 20px;
+    width: 30px;
+    z-index: 5;
+}

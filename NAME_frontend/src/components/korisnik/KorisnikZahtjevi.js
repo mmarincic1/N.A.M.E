@@ -15,13 +15,13 @@ import {
 
 import "./doktor-panel.css"
 
-const DoctorPanel = () => {
+const KorisnkZahtjevi = () => {
 
     useEffect(() => {
-        const id = JSON.parse(localStorage.getItem("doktor")).id;
+        const id = JSON.parse(localStorage.getItem("user")).id;
         console.log("id", id)
         async function dohvatiZahtjeve(id) {
-            fetch("https://localhost:7162/ListeKontroler/getZahtjeviDoktor/" + id, {
+            fetch("https://localhost:7162/ZahtjeviHendl/getUplatnicePacijent/" + id, {
                 method: "POST"
             })
                 .then(res => {
@@ -77,8 +77,8 @@ const DoctorPanel = () => {
         <>
             <div className="cardsList">{
                 zahtjevi.map((zahtjev, index) => < RequestItem id={zahtjev.id} posId={zahtjev.posiljalacId} primId={zahtjev.primalacID} key={index} index={index} ime={zahtjev.osoba.firstName + " " + zahtjev.osoba.lastName} opis={zahtjev.text} />
-            )}
-        </div>
+                )}
+            </div>
         </>
     )
 };

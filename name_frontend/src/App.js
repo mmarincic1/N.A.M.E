@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home.js';
 import Login from './components/Login.js';
@@ -15,50 +15,49 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function App() {
+
+    const [pacijent, setPacijent] = useState(false);
+    const [doktor, setDoktor] = useState(false);
+    const findHome = () => {
+        if (doktor) return "/doktor"
+        else if (pacijent) return "/korisnik"
+        else return "/login"
+    }
+
+    useEffect(() => console.log("doktor", doktor), [])
+
+
     return (<>
-        <Navbar bg="light" expand="lg" className="sticky-top">
-        <Container>
-            <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>
-                    <Nav.Link href="/zahtjevi">Zahtjevi</Nav.Link>
-
-                    <Nav.Link href="/korisnik">Korisnik Home</Nav.Link>
-
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
-                            Another action
-                        </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">
-                            Separated link
-                        </NavDropdown.Item>
-                    </NavDropdown>
-                    {/*<Nav.Link className="mr-auto">Login</Nav.Link>*/}
-                </Nav>
-                <Nav className="ml-auto">
-                        <Nav.Link className="mr-auto" href="/login">Login</Nav.Link>
-                        <Nav.Link className="mr-auto" href="/register">Register</Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-        </Container>
+        <Navbar  expand="lg" className="sticky-top poz-navbar">
+            <Container>
+                <Navbar.Brand href={findHome()}>Uputi me</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link href={findHome()}>Pocetna</Nav.Link>
+                        {doktor && <Nav.Link href="/doktor">Doktor panel</Nav.Link>}
+                        {pacijent && <Nav.Link href="/korisnik">Pacijent panel</Nav.Link>}
+                    </Nav>
+                    <Nav className="ml-auto">
+                        {!(doktor || pacijent) && <><Nav.Link className="mr-auto" href="/login">Prijavi se</Nav.Link>
+                            <Nav.Link className="mr-auto" href="/register">Registruj se</Nav.Link></>}
+                        {(doktor || pacijent) && <Nav.Link className="mr-auto" href="#">Odjavi se</Nav.Link>}
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
         </Navbar>
+        <div className="pozadina">
         <Router>
             <Routes>
-                <Route exact path='/' element={<Login />} />
-                <Route path='/login' element={<Login />} />
+                <Route exact path='/' element={<Login setPacijent={(value) => setPacijent(value)} />} />
+                <Route path='/login' element={<Login setPacijent={(value) => setPacijent(value)} />} />
                 <Route path='/register' element={<Home />} />
-                <Route path='/zahtjevi' element={<DoctorPanel />} />
-                <Route path='/doktor' element={<DoktorHome />} />
+                <Route path='/doktor' element={<DoctorPanel />} />
                 <Route path='/korisnik' element={<KorisnikHome />} />
-                <Route path='/loginDoktor' element={<LoginDoktor />} />
+                <Route path='/loginDoktor' element={<LoginDoktor setDoktor={(value) => setDoktor(value)} />} />
             </Routes>
-        </Router>
+            </Router>
+        </div>
     </>
     );
 }

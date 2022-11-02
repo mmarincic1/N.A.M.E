@@ -66,12 +66,12 @@ namespace NAME_bekend.Controllers
             var sha = SHA256.Create();
             var passwordHash = Encoding.ASCII.GetString(sha.ComputeHash(Encoding.ASCII.GetBytes("password")));
 
-            doktori.Add(new DoktorModel("doktor1@gmail.com", "Doktor1", "Doktorcic1", passwordHash, false, 1, 1, "1,2"));
-            doktori.Add(new DoktorModel("doktor2@gmail.com", "Doktor2", "Doktorcic2", passwordHash, false, 1, 2, "3,4"));
-            doktori.Add(new DoktorModel("doktor3@gmail.com", "Doktor3", "Doktorcic3", passwordHash, false, 2, 1, "1,2"));
-            doktori.Add(new DoktorModel("doktor4@gmail.com", "Doktor4", "Doktorcic4", passwordHash, false, 2, 2, "3,4"));
+            doktori.Add(new DoktorModel("doktor1@gmail.com", "Doktor1", "A", passwordHash, false, 1, 1, "1,2"));
+            doktori.Add(new DoktorModel("doktor2@gmail.com", "Doktor2", "B", passwordHash, false, 1, 2, "3,4"));
+            doktori.Add(new DoktorModel("doktor3@gmail.com", "Doktor3", "C", passwordHash, false, 2, 1, "1,2"));
+            doktori.Add(new DoktorModel("doktor4@gmail.com", "Doktor4", "D", passwordHash, false, 2, 2, "3,4"));
 
-            users.Add(new UserModel("BR123", null, "Matko", "Matko", "M" , null, "Paromlinska", null, null, null, null));
+            users.Add(new UserModel("BR123", null, "Matko", "Marinkovic", "M" , null, "Paromlinska", null, null, null, null));
             users.Add(new UserModel("BR124", null, "Emirko", "Emirko", "M" , null, "Grbavička 1", null, null, null, null));
             users.Add(new UserModel("BR125", null, "Nejlica", "Nejlica", "Z" , null, "Dobrinjska", null, null, null, null));
             users.Add(new UserModel("BR126", null, "Amarko", "Amarko", "M" , null, "Grbavička 2", null, null, null, null));

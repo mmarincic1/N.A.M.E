@@ -27,6 +27,8 @@ export default function Login(props) {
             })
             .then(data => {
                 localStorage.setItem("doktor", JSON.stringify(data));
+                console.log("props", props)
+                props.setDoktor(true);
                 window.location = "/doktor";
                 console.log(JSON.parse(localStorage.getItem("doktor")))
             })
@@ -37,7 +39,7 @@ export default function Login(props) {
             <div className="Auth-form-container">
                 <form className="Auth-form" onSubmit={handleLogin}>
                     <div className="Auth-form-content">
-                        <h3 className="Auth-form-title">Dobrodosli opet</h3>
+                        <h3 className="Auth-form-title">Dobrodosli</h3>
                         <div className="form-group mt-3">
                             <label>Email</label>
                             <input
@@ -55,7 +57,7 @@ export default function Login(props) {
                             />
                         </div>
                         <div className="d-grid gap-2 mt-3">
-                            <button type="submit" className="btn btn-primary">
+                            <button type="submit" className="btn btn-primary btn-color">
                                 Prijavi me
                             </button>
                         </div>
