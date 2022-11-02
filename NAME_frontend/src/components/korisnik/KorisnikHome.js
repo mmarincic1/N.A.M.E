@@ -18,6 +18,7 @@ export default function KorisnikHome(props) {
                 })
             
         }
+        console.log(localStorage)
         ZoviteDoktore(JSON.parse(localStorage.getItem("user")).porodicniDoktorId);
     }, [])
 
@@ -85,7 +86,7 @@ export default function KorisnikHome(props) {
                             <textarea className='form-control z-depth-1 my-area' rows="3" name="request" form="requestForm" placeholder='Opišite vaš problem...' cols="50" ></textarea>
                 </div>
                 <div className="d-grid gap-2 mt-3 divSredina">
-                    <button type="submit" className="btn btn-primary sredina">
+                            <button type="submit" className="btn btn-primary sredina btn-color">
                         Pošalji
                     </button>
                 </div>

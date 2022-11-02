@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './korisnik.css';
+import '../korisnik/korisnik.css';
 
 export default function DoktorHome(props) {
     const [doktor, setDoktor] = useState("");
